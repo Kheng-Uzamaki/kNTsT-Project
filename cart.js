@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const newRow = document.createElement('tr');
             newRow.innerHTML = `
                 <td>
-                    <a href="#"><i class="far fa-times-circle"></i></a>
+                    <a href="#" class="remove-product"><i class="far fa-times-circle remove"></i></a>
                 </td>
                 <td>
                     <img src="${product.img}" alt="">
@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <td>${product.name}</td>
                 <td>$${product.price.toFixed(2)}</td>
                 <td>
-                    <input type="number" value="${product.quantity}" data-id="${product.id}" class="quantity-input">
+                    <input type="number" value="${product.quantity}" data-id="${product.id}" class="quantity-input" min="1">
                 </td>
                 <td>$${(product.price * product.quantity).toFixed(2)}</td>
             `;
@@ -35,18 +35,34 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // Add event listener to quantity input for each product
             newRow.querySelector('.quantity-input').addEventListener('change', function(event) {
-                const newQuantity = parseInt(event.target.value);
+                let newQuantity = parseInt(event.target.value);
                 const productId = event.target.dataset.id;
+
+                // Ensure minimum quantity is 1
+                if (newQuantity < 1) {
+                    newQuantity = 1;
+                    event.target.value = newQuantity;
+                }
 
                 // Update quantity for the corresponding product in the cart
                 const productIndex = cart.findIndex(item => item.id === productId);
-                if (newQuantity === 0) {
-                    // If quantity becomes 0, remove the product from the cart
-                    cart.splice(productIndex, 1);
-                } else {
-                    // Update quantity and recalculate the price
-                    cart[productIndex].quantity = newQuantity;
-                }
+                cart[productIndex].quantity = newQuantity;
+
+                // Save updated cart data to localStorage
+                localStorage.setItem('selectedProducts', JSON.stringify(cart));
+
+                // Update the cart table to reflect changes
+                updateCartTable();
+                updateSubtotalAndTotal();
+            });
+
+            // Add event listener to remove product button
+            newRow.querySelector('.remove-product').addEventListener('click', function(event) {
+                event.preventDefault();
+                const productId = event.target.closest('tr').querySelector('.quantity-input').dataset.id;
+
+                // Remove the product from the cart
+                cart = cart.filter(item => item.id !== productId);
 
                 // Save updated cart data to localStorage
                 localStorage.setItem('selectedProducts', JSON.stringify(cart));
@@ -66,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const subtotal = cart.reduce((acc, product) => acc + (product.price * product.quantity), 0);
         const shipping = 'Free';
         const total = subtotal;
-        
+
         document.querySelector('#subtotal td:last-child').textContent = `$${subtotal.toFixed(2)}`;
         document.querySelector('#shipping td:last-child').textContent = shipping;
         document.querySelector('#total td:last-child').textContent = `$${total.toFixed(2)}`;
