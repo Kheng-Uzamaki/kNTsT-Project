@@ -106,14 +106,28 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Add event listener to the checkout button
     checkoutButton.addEventListener('click', function() {
+
+        //send to Post Method First
         // Show alert
         alert('Your order has been placed!');
 
-        // Clear local storage
-        localStorage.removeItem('selectedProducts');
-
-        // Clear input fields for full name and telephone number
-        document.querySelector('input[name="Fullname"]').value = '';
-        document.querySelector('input[name="tel"]').value = '';
+        
+    //    // Clear local storage
+    // localStorage.removeItem('selectedProducts');
+    // // Clear input fields for full name and telephone number
+    // document.querySelector('input[name="Fullname"]').value = '';
+    // document.querySelector('input[name="tel"]').value = '';
+    
+    // // Clear input fields for product details
+    // document.querySelector('input[name="product"]').value = '';
+    
+    // // Clear cart table
+    // cartTableBody.innerHTML = '';
+        
+       
+       
+        
     });
+   
+
 });

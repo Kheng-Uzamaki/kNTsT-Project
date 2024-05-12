@@ -880,6 +880,14 @@ label{
   color: #fff;
   padding: 12px 20px;
 }
+#clear{
+  background: red;
+  position: absolute;
+  bottom: 41.1%;
+  left: 25%;
+  color: #fff;
+  padding: 12px 20px;
+}
 
 #subtotal {
   width: 50%;
