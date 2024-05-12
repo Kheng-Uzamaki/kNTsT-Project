@@ -82,10 +82,23 @@ document.addEventListener('DOMContentLoaded', function() {
         const subtotal = cart.reduce((acc, product) => acc + (product.price * product.quantity), 0);
         const shipping = 'Free';
         const total = subtotal;
-
-        document.querySelector('#subtotal td:last-child').textContent = `$${subtotal.toFixed(2)}`;
-        document.querySelector('#shipping td:last-child').textContent = shipping;
-        document.querySelector('#total td:last-child').textContent = `$${total.toFixed(2)}`;
+    
+        // Update subtotal input value
+        document.querySelector('input[name="Subtotal"]').value = `$${subtotal.toFixed(2)}`;
+    
+        // Update total input value
+        document.querySelector('input[name="Total"]').value = `$${total.toFixed(2)}`;
+    
+        // Concatenate product details for each product
+        const productDetails = cart.map(product => {
+            return `ID: ${product.id}, Name: ${product.name}, Image: ${product.img}`;
+        });
+    
+        // Join product details with a separator
+        const allProductDetails = productDetails.join('\n');
+    
+        // Update product details input value
+        document.querySelector('input[name="product"]').value = allProductDetails;
     }
 
     // Update the cart table initially
@@ -96,7 +109,11 @@ document.addEventListener('DOMContentLoaded', function() {
         // Show alert
         alert('Your order has been placed!');
 
-        // Refresh the products table
-        updateCartTable();
+        // Clear local storage
+        localStorage.removeItem('selectedProducts');
+
+        // Clear input fields for full name and telephone number
+        document.querySelector('input[name="Fullname"]').value = '';
+        document.querySelector('input[name="tel"]').value = '';
     });
 });
