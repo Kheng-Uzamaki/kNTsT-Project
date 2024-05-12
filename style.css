@@ -154,12 +154,16 @@ body {
   flex-direction: column;
   align-items: flex-end;
   justify-content: center;
+  text-align: right;
+  
 }
 #hero h4 {
   margin-bottom: 15px;
+  
 }
 #hero h1 {
   color: #fff;
+  
 }
 #hero button {
   background-image: url(img/button.png);
@@ -679,7 +683,7 @@ label{
 }
 .member ul{
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   flex-wrap: wrap;
 }
@@ -970,10 +974,10 @@ label{
   #feature .fe-box {
     margin: 15px 15px;
   }
-  #product1 .pro-container {
+  #product1 .pro-container, .Npro-container {
     justify-content: center;
   }
-  #product1 .pro {
+  #product1 .pro , .Npro{
     margin: 16px;
   }
   #banner {
