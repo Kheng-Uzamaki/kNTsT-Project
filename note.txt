@@ -15,3 +15,9 @@
 
 // XX-Large devices (larger desktops, 1400px and up)
 @media (min-width: 1400px) { ... }
+
+:root {
+  --linear-grad: linear-gradient(to right, #88e0ee, #8ba2bd);
+  --grad-clr1: #88e0ee;
+  --grad-clr2: #85acd8;
+}

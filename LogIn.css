@@ -38,6 +38,7 @@ body {
 .sign-up-container {
   opacity: 0;
   z-index: 1;
+  
 }
 .sign-in-container {
   z-index: 2;
@@ -114,11 +115,18 @@ button {
   padding: 12px 45px;
   letter-spacing: 1px;
   text-transform: uppercase;
-  cursor: pointer;
 }
-/* .overlay-panel .btnUp{
-  border: 2px solid white;
-} */
+.overlay-panel .btnIn{
+ position: relative;
+ bottom: 22px;
+}
+.overlay-panel .btnIn p{
+  font-weight: 600;
+}
+.overlay-panel .BtnUp {
+  position: relative;
+  bottom: 4px;
+}
 .form-container button {
   margin-top: 17px;
   transition: 80ms ease-in;
@@ -238,6 +246,111 @@ p{
     width: 143.67px ;
   }
 }
+/* Responsive Styles */
+/* Extra larg */
+@media(min-width:1200px){
+
+}
+ /* Large devices (desktops, 992px and up) */
+@media(min-width:992px) and (max-width:1199.98px){
+
+}
+
+
+/* Medium device */
+@media(min-width: 768px) and (max-width:991.98px){
+  .overlay-panel {
+    padding: 0 0 0 60px;
+  }
+  .overlay-panel p{
+    padding: 0 10px 0 10px ;
+  }
+  .infield input{
+   height: 40px;
+   font-size: 15px;
+   /* width: 100%; */
+   
+  }
+
+}
+/*small device*/
+@media(min-width:576px) and (max-width:767.98px){
+  .form-container{
+    padding: 1px 1px;
+  }
+  .form-container h1{
+    font-size: 30px;
+  }
+.social-container a{
+ width: 35px;
+ height: 35px;
+}
+.infield input{
+  font-size: 12px;
+}
+.forgot {
+  font-size: 12px;
+}
+.overlay-panel{
+  padding: 0 10px 0 130px;
+}
+.overlay-panel h1{
+  font-size: 25px;
+  /* padding: 0 0 0 60px; */
+}
+.overlay-panel p{
+  font-size: 12px;
+}
+button{
+  padding: 10px 25px ;
+  font-size: 11px;
+}
+}
+
+/*Extra small device  */
+@media(max-width:575px){
+  .container{
+    width: 400px;
+  }
+  .form-container{
+    padding: 1px 1px 1px 1px;
+  }
+  .infield input{
+    font-size: 12px;
+    height:10px;
+    border-radius: 2px 2px 0px 0px;
+  }
+  .overlay-panel{
+    padding: 0 8px 0 11.6rem;
+  }
+  .overlay-panel h1{
+    font-size: 20px;
+  }
+  .overlay-panel p{
+    font-size: 8px;
+  }
+  .forgot{
+    font-size: 10px;
+  }
+
+  button{
+    font-size: 12px;
+    padding: 10px 20px 10px 20px;
+  }
+  .your{
+    font-size: 10px;
+  }
+  .social-container a{
+    width: 30px;
+    height: 30px;
+  }
+
+}
+
+
+
+
+
 
 
 
